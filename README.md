@@ -21,6 +21,20 @@ This creates `data/pi.txt` with `3.` followed by pi digits.
 python scripts/make_pi_dataset.py --digits 1000000 --out data/pi.txt
 ```
 
+By default this downloads precomputed digits from `pi.delivery`, which is much
+faster than computing them locally. For larger datasets, use a large chunk size
+to reduce request overhead:
+
+```powershell
+python scripts/make_pi_dataset.py --digits 10000000 --out data/pi.txt --chunk-size 1000000
+```
+
+If you need offline generation, use the slower local path:
+
+```powershell
+python scripts/make_pi_dataset.py --digits 100000 --out data/pi.txt --source compute
+```
+
 For a quick smoke test, use fewer digits:
 
 ```powershell
